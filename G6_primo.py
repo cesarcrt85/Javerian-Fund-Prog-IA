@@ -14,25 +14,30 @@
 # [30.07.2020]
 # ----------------------------------------------------------------------------------------
 # IMPORTAR MODULOS
+# ----------------------------------------------------------------------------------------
 import datetime   # modulo de python para este ejemplo (se usara para mostrar la fecha)
 # ----------------------------------------------------------------------------------------
-# VARIABLES GLOBALES -------------------------------------------------------------------
-# POSTCONDICIONES
+# VARIABLES GLOBALES 
+#----------------------------------------------------------------------------------------
+# PRECONDICIONES
+# ----------------------------------------------------------------------------------------
+# 1. El Numero ingresado debe ser natural.
 # ----------------------------------------------------------------------------------------
 # VARIABLES
-numero_in = None
+# ----------------------------------------------------------------------------------------
+#numero_in = Almacena el número ingresado por el usuario para su posterior validación
+# ----------------------------------------------------------------------------------------
 # POSTCONDICIONES
+# ----------------------------------------------------------------------------------------
 # 1. El programa debe determinar si el número dado es primo o no.
 # 2. El programa debe mostrar un mensaje indicando si el número es primo o no.
-# 3. El Numero ingresado debe ser natural.
+# 
 # ----------------------------------------------------------------------------------------
 # PARAMETROS
 # ----------------------------------------------------------------------------------------
 # listar aqui los parámetros
 numero_in = int(input("Ingrese un número entero positivo: "))
-
 # <<Escriba desde aqui el código del programa...>>
-print("*** Un programa para mostrar una plantila para la escritura del código *** ")
 print(datetime.date.today())
 
 def validaciones(numero):
@@ -58,7 +63,8 @@ if validaciones(numero_in):
     else: 
         print("El numero no es primo")    
 
-# ----------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------            ---
 # end.
 # ----------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------
+    

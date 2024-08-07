@@ -1,102 +1,67 @@
 # ----------------------------------------------------------------------------------------
-# PROGRAMA: <<nombre del programa>>
+# PROGRAMA: G6_primo.py
 # ----------------------------------------------------------------------------------------
 # Descripción: 
-# Este programa tiene como objetivo implementar un conjunto de funciones para resolver las
-# siguientes tareas: crear dos listas de 10 valores enteros cada una, donde la primera 
-# lista, denominada listaUno, debe ser generada de manera aleatoria, y la segunda lista, 
-# denominada listaDos, se debe generar a partir de 10 valores enteros que serán pedidos al 
-# usuario uno por uno. Además, se crearán dos listas inicialmente vacías: listaClonada y 
-# listaSuma. El programa principal presentará un menú con opciones para llevar a cabo 
-# las tareas indicadas.
+# Este programa verifica si un número natural dado es primo o no.
+# Un número primo es aquel que solo es divisible por 1 y por sí mismo.
+# El programa muestra si el número es primo o no.
 # ----------------------------------------------------------------------------------------
-# Autor: 
-# Version: 2.0
-# [18.07.2020]
+# Autores:
+# JONATAN SANTIAGO ARANDA NIEVES
+# EDGAR SEBASTIAN FONSECA RODRIGUEZ
+# CESAR GONZALEZ CORTES
+# Version: 1.0
+# [30.07.2024]
 # ----------------------------------------------------------------------------------------
 # IMPORTAR MODULOS
-import datetime   # modulo de python para este ejemplo (se usara para mostrar la fecha)
-import random
 # ----------------------------------------------------------------------------------------
-# VARIABLES GLOBALES Y PRE-CONDICIONES
 # ----------------------------------------------------------------------------------------
-
-# << aqui una explicación concreta >>
-
+# VARIABLES GLOBALES 
+#----------------------------------------------------------------------------------------
+# numero_in = Almacena el número ingresado por el usuario para su posterior validación
+#----------------------------------------------------------------------------------------
+# PRECONDICIONES
+# ----------------------------------------------------------------------------------------
+# 1. El dato ingresado debe ser un número natural.
+# ----------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------
 # POSTCONDICIONES
 # ----------------------------------------------------------------------------------------
-
-# << aqui una explicación concreta >>
-
+# 1. El programa debe determinar si el número dado es primo o no.
+# 2. El programa debe mostrar un mensaje indicando si el número es primo o no.
+# 
 # ----------------------------------------------------------------------------------------
 # PARAMETROS
 # ----------------------------------------------------------------------------------------
 # listar aqui los parámetros
 
-def main():
-    # Crear las listas listaUno y listaDos
-    listaUno = generar_lista_aleatoria(10)
-    listaDos = generar_lista_usuario(10)
-    
-    # Crear las listas listaClonada y listaSuma
-    listaClonada = []
-    listaSuma = []
-    
-    # Mostrar el menú y realizar las tareas indicadas
-    while True:
-        print("----- MENÚ -----")
-        print("1. Mostrar Valores (listaUno y listaDos")
-        print("2. Clonar listaUno")
-        print("3. Sumar listas")
-        print("4. Salir")
-        
-        opcion = int(input("Ingrese una opción: "))
-        
-        if opcion == 1:
-            mostrar_valores(listaUno, listaDos)
-        elif opcion == 2:
-            listaClonada = clonar_lista(listaUno)
-            print("Lista clonada:", listaClonada)
-        elif opcion == 3:
-            listaSuma = sumar_listas(listaUno, listaDos)
-            print("Lista suma:", listaSuma)
-        elif opcion == 4:
-            print("Saliendo del programa...")
-            break
-        else:
-            print("Opción inválida. Por favor, ingrese una opción válida.")
-    
-    print("Fin del programa.")
+# <<Escriba desde aqui el código del programa...>>
 
-# Función para generar una lista aleatoria de tamaño n
-def generar_lista_aleatoria(n):
-    return [random.randint(1, 100) for _ in range(n)]
+numero_in = int(input("Ingrese un número entero positivo: "))
 
-# Función para generar una lista ingresada por el usuario de tamaño n
-def generar_lista_usuario(n):
-    lista = []
-    for i in range(n):
-        valor = int(input(f"Ingrese el valor {i+1}: "))
-        lista.append(valor)
-    return lista
+def validaciones(numero):
+    if numero < 0:
+        print("El numero tiene que ser Natural")
+        return False
+    return True 
 
-# Función para mostrar los valores de listaUno y listaDos
-def mostrar_valores(listaUno, listaDos):
-    print("Valores de listaUno:", listaUno)
-    print("Valores de listaDos:", listaDos)
+def primo(numero):
+    """
+    Función para determinar si un número es primo.
+    """
+    if numero <= 1:
+        return False
+    for i in range(2, int(numero**0.5) + 1):
+        if numero % i == 0:
+            return False
+    return True
 
-# Función para clonar una lista
-def clonar_lista(lista):
-    return lista.copy()
+if validaciones(numero_in):
+    if primo(numero_in):
+        print("El numero es primo")
+    else: 
+        print("El numero no es primo")    
 
-# Función para sumar dos listas elemento a elemento
-def sumar_listas(lista1, lista2):
-    return [x + y for x, y in zip(lista1, lista2)]
-
-# Llamar a la función main
-if __name__ == "__main__":
-    main()
 # ----------------------------------------------------------------------------------------
-# end.
+# Fin.
 # ----------------------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------------------
-# PROGRAMA: <<nombre del programa>>
+# PROGRAMA: Grupo6_integrarFunciones.py
 # ----------------------------------------------------------------------------------------
 # Descripción: 
 # Este programa tiene como objetivo implementar un conjunto de funciones para resolver las
@@ -8,95 +8,134 @@
 # denominada listaDos, se debe generar a partir de 10 valores enteros que serán pedidos al 
 # usuario uno por uno. Además, se crearán dos listas inicialmente vacías: listaClonada y 
 # listaSuma. El programa principal presentará un menú con opciones para llevar a cabo 
-# las tareas indicadas.
+# diferentes tareas indicadas.
 # ----------------------------------------------------------------------------------------
-# Autor: 
-# Version: 2.0
-# [18.07.2020]
+# Autores:
+# JONATAN SANTIAGO ARANDA NIEVES
+# EDGAR SEBASTIAN FONSECA RODRIGUEZ
+# CESAR GONZALEZ CORTES
+# Version: 1.0
+# [07.08.2024]
 # ----------------------------------------------------------------------------------------
 # IMPORTAR MODULOS
-import datetime   # modulo de python para este ejemplo (se usara para mostrar la fecha)
 import random
 # ----------------------------------------------------------------------------------------
-# VARIABLES GLOBALES Y PRE-CONDICIONES
+# VARIABLES GLOBALES 
+#-----------------------------------------------------------------------------------------
+#listaClonada: Almacena la lista cloda resultante de la funcion clonarLista
+#listaSuma: Almacena la lista resultante de la suma de la lista uno y lista dos
+#listaUno: Almacena 10 valores enteros generados aleatoreamente
+#listaDos: Almacena 10 valores enteros ingresados por el usuario
+#----------------------------------------------------------------------------------------
+# PRECONDICIONES
 # ----------------------------------------------------------------------------------------
-
-# << aqui una explicación concreta >>
-
-# ----------------------------------------------------------------------------------------
+#1. El usuario debe ingresar 10 valores enteros para llenar la lista dos
+#2. El usuario debe seleccionar la opción de un menú para que el sistema realice una acción 
+#------------------------------------------------------------------------------------------
 # POSTCONDICIONES
-# ----------------------------------------------------------------------------------------
-
-# << aqui una explicación concreta >>
-
-# ----------------------------------------------------------------------------------------
-# PARAMETROS
-# ----------------------------------------------------------------------------------------
-# listar aqui los parámetros
-
-def main():
-    # Crear las listas listaUno y listaDos
-    listaUno = generar_lista_aleatoria(10)
-    listaDos = generar_lista_usuario(10)
-    
-    # Crear las listas listaClonada y listaSuma
-    listaClonada = []
-    listaSuma = []
-    
-    # Mostrar el menú y realizar las tareas indicadas
-    while True:
-        print("----- MENÚ -----")
-        print("1. Mostrar Valores (listaUno y listaDos")
-        print("2. Clonar listaUno")
-        print("3. Sumar listas")
-        print("4. Salir")
-        
-        opcion = int(input("Ingrese una opción: "))
-        
-        if opcion == 1:
-            mostrar_valores(listaUno, listaDos)
-        elif opcion == 2:
-            listaClonada = clonar_lista(listaUno)
-            print("Lista clonada:", listaClonada)
-        elif opcion == 3:
-            listaSuma = sumar_listas(listaUno, listaDos)
-            print("Lista suma:", listaSuma)
-        elif opcion == 4:
-            print("Saliendo del programa...")
-            break
-        else:
-            print("Opción inválida. Por favor, ingrese una opción válida.")
-    
-    print("Fin del programa.")
+#------------------------------------------------------------------------------------------
+#1. El sistema debe realizar las operaciones indicadas por el usuario según la opción que haya 
+#seleccionado
+#2. El sistema debe mostrar el resultado de la función ejecutada según la selección del usuario
+# --------------------------
 
 # Función para generar una lista aleatoria de tamaño n
-def generar_lista_aleatoria(n):
+def listaAleatoria(n):
     return [random.randint(1, 100) for _ in range(n)]
 
 # Función para generar una lista ingresada por el usuario de tamaño n
-def generar_lista_usuario(n):
+def listaManual(n):
     lista = []
+    print("A continuacin ingresará los ", n, " valores de la lista dos:")
     for i in range(n):
         valor = int(input(f"Ingrese el valor {i+1}: "))
         lista.append(valor)
     return lista
 
 # Función para mostrar los valores de listaUno y listaDos
-def mostrar_valores(listaUno, listaDos):
-    print("Valores de listaUno:", listaUno)
-    print("Valores de listaDos:", listaDos)
+def mostrarLista(listaUno, listaDos):
+    print("Los valores de listaUno son:")
+    for valor in listaUno:
+        print(valor)
+        
+    print("Los valores de listaDos son:")
+    for valor in listaDos:
+        print(valor)
+
+# Función para mostrar el valor máximo y mínimo de la lista uno
+def minMax(listaUno):
+
+    max_value = max(listaUno)
+    min_value = min(listaUno)
+    return max_value, min_value
+    
 
 # Función para clonar una lista
-def clonar_lista(lista):
+def clonarLista(lista):
     return lista.copy()
 
 # Función para sumar dos listas elemento a elemento
-def sumar_listas(lista1, lista2):
+def sumarListas(lista1, lista2):
     return [x + y for x, y in zip(lista1, lista2)]
 
-# Llamar a la función main
-if __name__ == "__main__":
-    main()
+# Función para determinar si un elemento está en la lista suma
+def valorEnLista(listaSuma, k):
+    return k in listaSuma
+ # Mostrar el menú y realizar las tareas indicadas
+def mostrarMenu(listaSuma):
+        print("*********************************************************************")
+        print("----- MENÚ -----")
+        print("0. Salir")
+        print("1. Mostrar Valores (listaUno y listaDos")
+        print("2. Valor Máximo y Mínimo (listaUno)")
+        print("3. Clonar listaUno")
+        print("4. Sumar Listas (listaClonada y listaDos)")
+        print("5. ¿Valor en lista? (listaSuma)")
+        print("*********************************************************************")
+        
+        opcion = int(input("\nIngrese la opción deseada (1-5) o 0 para terminar:"))
+        
+        if opcion == 0:
+            print("Finalizando del programa...")
+            
+        elif opcion == 1:
+            mostrarLista(listaUno, listaDos)
+            mostrarMenu(listaSuma)
+        elif opcion == 2:
+            max_value, min_value =minMax(listaUno)
+            print("El valor máximo de la lista es:", max_value)
+            print("El valor mínimo de la lista es:", min_value)
+            mostrarMenu(listaSuma)
+        elif opcion == 3:
+            listaClonada = clonarLista(listaUno)
+            print("Lista clonada:", listaClonada)
+            mostrarMenu(listaSuma)
+        elif opcion == 4:
+            listaSuma = sumarListas(listaUno, listaDos)
+            print("Lista suma:", listaSuma)
+            mostrarMenu(listaSuma)
+        elif opcion == 5:
+            k = int(input("Ingrese el valor que desea buscar en la listaSuma: "))
+            if valorEnLista(listaSuma,k)==True :
+                print("El valor ",k," si se encuentra en ListaSuma")
+            else:
+                print("El valor ",k," no se encuentra en ListaSuma")       
+            mostrarMenu(listaSuma)
+        else:
+            print("Opción inválida. Por favor, ingrese una opción válida.") 
+            mostrarMenu(listaSuma)
+            
+# Crear las listas listaClonada y listaSuma
+listaClonada = []
+listaSuma = []
+
+# Crear las listas listaUno y listaDos
+listaUno = listaAleatoria(10)
+listaDos = listaManual(10)
+    
+mostrarMenu(listaSuma)
+    
+print("Fin del programa.")
 # ----------------------------------------------------------------------------------------
 # end.
 # ----------------------------------------------------------------------------------------
